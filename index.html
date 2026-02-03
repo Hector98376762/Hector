@@ -5,555 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 20px 50px;
-   position: sticky;
-   z-index: 1000;
-   top: 0;
-   background-color: #3a5a40;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-   transition: background-color 0.3 ease;
-   
-}
-
-.menu-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo img {
-    width: 80px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.logo h1 {
-    font-weight: 500;
-}
-
-.menu-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3 ease, border-buttom o.3 ease;
-}
-
-.menu-links a:hover {
-  color: #a7f3a0;
-  border-bottom: 2px solid #a7f3a0;
-}
-
-.hero {
-    min-height: 90vh;
-   background: linear-gradient(
-    rgba(31,61,43,0.20),
-    rgba(31,61,43,0.20)
-   ),
-   url(https://www.arrozsos.es/wp-content/uploads/2024/10/Comida-Vegana-y-Salud.jpg);
-   background-position: center;
-   background-size: cover;
-   background-repeat: no-repeat;
+    <link rel="stylesheet" href="actividad17.css">
     
-}
-
-.contenedor {
-    width: 100%;
-}
-
-.contenedor h2 {
-    text-align: center;
-    font-size: 3rem;
-    color: white;
-    padding-top: 20px;
-}
-
-.contenedor p {
-    text-align: center;
-    padding-top: 10px;
-    font-size: 2rem;
-    color: white;
-}
-
-.btn {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px;
-}
-
-.btn button {
-    padding: 15px;
-    width: 112px;
-    border: none;
-    border-radius: 15px;
-    background-color: #3a5a40;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.4 ease;
-    margin: 0;
-}
-
-.btn button:hover{
-    background-color: #2ecc71;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
-}
-
-.nosotros {
-    padding: 100px 0;
-    background: #f9f9f9;
-}
-
-.nosotros h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 60px;
-}
-
-.nosotros-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-    align-items: center;
-}
-
-.nosotros img {
-    width: 100%;
-    border-radius: 20px;
-    margin-left: 15px;
-}
-
-.texto p{
-   font-size: 1.1rem;
-   line-height: 1.7;
-   margin-bottom: 20px;
-}
-
-.valores {
-    list-style: none;
-    padding: 0;
-}
-
-.valores li {
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.menu {
-    padding: 100px 0;
-    background: #f9f9f9;
-   
-}
-
-.contten {
-    max-width: 1200px;
-    margin: auto 0;
-  
-}
-
-.content h2 {
-    text-align: center;
-    font-size: 2.5rem;
-     margin-bottom: 60px;
-}
-
-.grid-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(280px , 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: #fff;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-    border-radius: 12px;
-    padding-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-
-.card {
-    position: relative;
-}
-
-.precio {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    padding: 5px 10px;
-    background-color: #2ecc71;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.card h3 {
-    padding-bottom: 5px;
-}
-
-.card p {
-    padding-bottom: 5px;
-    font-weight: 400;
-    line-height: 1.2;
-}
-
-.btn-x button{
-    width: 112px;
-    margin-top: 10px;
-    padding: 8px;
-    border-radius: 15px;
-    cursor: pointer;
-    border: none;
-    background-color: #3a5a40;
-    color: #fff;
-    transition: all 0.4 ease;
-}
-
-.btn-x button:hover {
-    background-color: #2ecc71;
-    transform: translateY(-3px);
-}
-
-.card:hover{
-    transform: translateY(-3px);
-}
-
-.chef {
-    padding: 80px 20px;
-    background: #f9f9f9;
-}
-
-.container-f {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.container-f h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
-}
-
-.card-chef {
-    padding-bottom: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-    text-align: center;
-}
-
-.card-chef img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.chef-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px , 1fr));
-    gap: 30px;
-}
-
-.card-chef h3 {
-    margin-bottom: 10px;
-}
-
-.card-chef p {
-  padding-bottom: 10px;
-}
-
-
-.socia-cons{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    font-size: 25px;
-    margin-top: 15px;
-}
-
-.bi-facebook {
-    color: #25D;
-}
-
-.bi-instagram {
-    background: linear-gradient(45deg,
-    #feda75, #fa7e1e, #d62976, #4f5bd5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.bi-whatsapp {
-    color: #2ecc71;
-}
-.socia-cons i{
-    transition: transform 0.3 ease, opacity 0.3s ease;
-    cursor: pointer;
-}
-.socia-cons i:hover {
-   transform: scale(1.2);
-   
-}
-
-.comentarios {
-    padding: 80px 20px;
-    background-color: #fff;
-    text-align: center;
-    
-}
-
-.container-0{
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    
-}
-
-.texto h2 {
-    margin-bottom: 5px;
-    font-size: 2.5rem;
-}
-
-.texto p {
-    color: #666;
-}
-
-.comentarios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(280px , 1fr));
-    gap: 30px;
-}
-
-.card-y{
-    margin-top: 30px;
-    background-color: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-    padding-bottom: 20px;
-    border-radius: 15px;
-}
-
-.card-y img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 200%;
-}
-
-.card-y h4 {
-    padding-bottom: 10px;
-    padding-top: 10px;
-
-}
-
-.card-y p {
-    color: #666;
-    padding-bottom: 10px;
-}
-
-.card-y span {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-}
-
-.card-y:hover {
-    transform: translateY(-3px);
-}
-
-.btn-m button{
-   width: 112px;
-   padding: 8px;
-   border-radius: 15px;
-   border: none;
-   margin-top: 10px;
-   background-color: #3a5a40;
-   color: #fff;
-   cursor: pointer;
-   transition: all 0.4 ease;
-}
-
-.btn-m button:hover {
-    background-color: #2ecc71;
-    transform: translateY(-3px);
-}
-
-.contactos{
-    padding: 80px 20px;
-    background: #111;
-    color: white;
-    
-}
-
-.container-s{
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-}
-
-.container-s form{
-    margin-top: 40px;
-    display: grid;
-    gap: 20px;
-}
-
-.campo {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.container-s h2 {
-    padding-bottom: 10px;
-    font-size: 2.5rem;
-}
-
-.campo label{
-    padding: 5px;
-}
-.campo input,
-.campo select,
-.campo textarea {
-    padding: 12px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-}
-
-.btn-reservar {
-    padding: 14px;
-    background: #3a5a40;
-    cursor: pointer;
-    transition: all 0.3 ease;
-    border: none;
-    font-size: 16px;
-    border-radius: 15px;
-}
-
-.btn-reservar:hover {
-    transform: translateY(-3px);
-    background-color: #2ecc71;
-}
-
-.footer {
-    background: #666;
-    color: #fff;
-    padding: 80px 20px;
-}
-
-.footer-contenedor {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-}
-
-.footer-col h3,
-.footer-col h4{
-    margin-bottom: 15px;
-}
-
-.footer-col ul{
-    list-style: none;
-    padding: 0;
-}
- .footer-col ul li {
-    margin-bottom: 8px;
- }
-
- .footer-col a {
-    text-decoration: none;
-    color: #ccc;
- }
-
- .footer-col a:hover {
-    color: #a7f3a0;
- }
-
- .footer-social a {
-    font-size: 20px;
-    margin-right: 12px;
- }
-
- .footer .bi-whatsapp{color: #1877f2;}
- .footer .bi-instagram{color: #e1306c;}
- .footer .bi-facebook {color: #1877f2;}
-
- .footer-copy {
-    text-align: center;
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 20px;
- }
-
- .hero{
-    min-height: 100vh;
- }
- @media (max-width: 768px) {
-    .hero{
-        text-align: center;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
- }
-
- @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
- }
- 
-@media (max-width: 600px) {
-    .card {
-        padding: 15px;
-    }
-}
-    </style>
+        
 </head>
 <body>
      <header class="header">
         <div class="logo">
-          <img src="/img/vegan.fot.jpg" alt="">
+          <img src="img/vegan.fot.jpg" alt="">
           <h1>VEGOOD</h1>
         </div>
         <nav>
@@ -589,7 +48,7 @@
             <h2>Sobre nosotros</h2>
             <div class="nosotros-grid">
                 <div class="nosotros-img">
-                    <img src="/img/historia.vegetariana.jpg" alt="Nuestro restaurante">
+                    <img src="img/historia.vegetariana.jpg" alt="Nuestro restaurante">
                 </div>
 
                 <div class="texto">
@@ -614,7 +73,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
 
         <div class="grid-menu">
             <div class="card">
-                <img src="/img/sopa de verdura.jpg" alt="Imagen1">
+                <img src="img/sopa de verdura.jpg" alt="Imagen1">
                 <h3>Sopa de verdura</h3>
                 <p>Deliciosa y saludable</p>
                 <span class="precio">$ 8.44</span>
@@ -623,7 +82,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
         </div>
         <div class="card">
-                <img src="/img/brocoli.2.jpg" alt="Imagen2">
+                <img src="img/brocoli.2.jpg" alt="Imagen2">
                 <h3>Brocoli</h3>
                 <p>Vegetal super nutritivo</p>
                 <span class="precio">$ 6.66</span>
@@ -632,7 +91,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
     </div>
     <div class="card">
-                <img src="/img/sopa de tomate.jpg" alt="Imagen3">
+                <img src="img/sopa de tomate.jpg" alt="Imagen3">
                 <h3>Sopa de tomate</h3>
                 <p>Muy buena y calientita</p>
                 <span class="precio">$ 5.77</span>
@@ -642,7 +101,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
 </div>
 
 <div class="card">
-                <img src="/img/tayota.jpg" alt="Imagen4">
+                <img src="img/tayota.jpg" alt="Imagen4">
                 <h3>Ensalada de tayota</h3>
                 <p>Sumamente saludable y cremosa</p>
                 <span class="precio">$ 11.55</span>
@@ -651,7 +110,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
                 </div>
 <div class="card">
-                <img src="/img/ensalada rusa.jpg" alt="Imagen5">
+                <img src="img/ensalada rusa.jpg" alt="Imagen5">
                 <h3>Ensalada rusa</h3>
                 <p>Super cremosa y deliciosa</p>
                 <span class="precio">$ 4.88</span>
@@ -661,7 +120,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
             <div class="card">
-                <img src="/img/sopa de brocoli.jpg" alt="Imagen6">
+                <img src="img/sopa de brocoli.jpg" alt="Imagen6">
                 <h3>Sopa de brocoli</h3>
                 <p>Muy buena y super sabrosa</p>
                 <span class="precio">$ 12.99</span>
@@ -670,7 +129,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de aguacate.jpg" alt="Imagen7">
+                <img src="img/ensalada de aguacate.jpg" alt="Imagen7">
                 <h3>Ensalada de aguacate</h3>
                 <p>Grasa buena y sabor bueno</p>
                 <span class="precio">$ 12.77</span>
@@ -679,7 +138,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada verde.jpg" alt="Imagen8">
+                <img src="img/ensalada verde.jpg" alt="Imagen8">
                 <h3>Ensalada verde</h3>
                 <p>Muy nutritiva y sabrosa</p>
                 <span class="precio">$ 12.33</span>
@@ -688,7 +147,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de pepino.jpg" alt="Imagen9">
+                <img src="img/ensalada de pepino.jpg" alt="Imagen9">
                 <h3>Ensalada de pepino</h3>
                 <p>Delicia en vida</p>
                 <span class="precio">$ 12.24</span>
@@ -697,7 +156,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/jugo de zanahoria.jpg" alt="Imagen10">
+                <img src="img/jugo de zanahoria.jpg" alt="Imagen10">
                 <h3>Jugo de zanahoria</h3>
                 <p>Jugo nutritivo y Refrescante</p>
                 <span class="precio">$ 12.99</span>
@@ -706,7 +165,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de lechuga.jpg" alt="Imagen11">
+                <img src="img/ensalada de lechuga.jpg" alt="Imagen11">
                 <h3>Ensalada de lechuga</h3>
                 <p>Muy nutritiva y sin sabor</p>
                 <span class="precio">$ 5.11</span>
@@ -715,7 +174,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/jugo de ensalada verde.jpg" alt="Imagen12">
+                <img src="img/jugo de ensalada verde.jpg" alt="Imagen12">
                 <h3>Jgo de ensalada verde</h3>
                 <p></p>
                 <span class="precio">$ 12.66</span>
@@ -724,7 +183,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de espinacas.jpg" alt="Imagen13">
+                <img src="img/ensalada de espinacas.jpg" alt="Imagen13">
                 <h3>Ensalada de espinacas</h3>
                 <p>Plato fino t elegante</p>
                 <span class="precio">$ 12.99</span>
@@ -733,7 +192,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de atum.jpg" alt="Imagen14">
+                <img src="img/ensalada de atum.jpg" alt="Imagen14">
                 <h3>Ensalada de atum</h3>
                 <p>Plato cremado y hermoso</p>
                 <span class="precio">$ 12.78</span>
@@ -742,7 +201,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de codito.jpg" alt="Imagen15">
+                <img src="img/ensalada de codito.jpg" alt="Imagen15">
                 <h3>Ensalada de codito</h3>
                 <p>Nuestro mejor plato</p>
                 <span class="precio">$ 12.18</span>
@@ -751,7 +210,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de macarrones.jpg" alt="Imagen16">
+                <img src="img/ensalada de macarrones.jpg" alt="Imagen16">
                 <h3>Ensalada de macarrones</h3>
                 <p>Cremosa , exquisita,deliciosa</p>
                 <span class="precio">$ 12.22</span>
@@ -760,7 +219,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de pin.jpg" alt="Imagen17">
+                <img src="img/ensalada de pin.jpg" alt="Imagen17">
                 <h3>Ensalada de piña</h3>
                 <p>Delicia en cantidad</p>
                 <span class="precio">$ 7.30</span>
@@ -769,7 +228,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
              </div>
              <div class="card">
-                <img src="/img/ensalada de repollo.jpg" alt="Imagen18">
+                <img src="img/ensalada de repollo.jpg" alt="Imagen18">
                 <h3>Ensalada de repollo</h3>
                 <p>Plato premium</p>
                 <span class="precio">$ 8.99</span>
@@ -786,7 +245,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
         <h2>Nuestros chef</h2>
         <div class="chef-grid">
             <div class="card-chef">
-                <img src="/img/hector.jpg" alt="Chef1">
+                <img src="img/hector.jpg" alt="Chef1">
                 <h3>Hector Antonio</h3>
                 <p>Experto en sopa vegetariana</p>
                 <div class="socia-cons">
@@ -796,7 +255,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
             </div>
             <div class="card">
-                <img src="/img/eliezer.jpg" alt="Chef2">
+                <img src="img/eliezer.jpg" alt="Chef2">
                 <h3>Eliezer Paulino</h3>
                 <p>Experto en ensalada rusa</p>
                 <div class="socia-cons">
@@ -806,7 +265,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
         </div>
         <div class="card">
-                <img src="/img/maria.jpg" alt="Chef3">
+                <img src="img/maria.jpg" alt="Chef3">
                 <h3>Marta Vargas</h3>
                 <p>Experto en ensalada verde</p>
                 <div class="socia-cons">
@@ -816,7 +275,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
              </div>
       </div>
        <div class="card">
-                <img src="/img/luis.jpg" alt="Chef4">
+                <img src="img/luis.jpg" alt="Chef4">
                 <h3>Luis Segura</h3>
                 <p>Experto en ensalada de macarrones</p>
                 <div class="socia-cons">
@@ -827,7 +286,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
             <div class="card">
-                <img src="/img/jordy.jpg" alt="Chef5">
+                <img src="img/jordy.jpg" alt="Chef5">
                 <h3>Jordy Ortiz</h3>
                 <p>Experto en ensalada de aguacate</p>
                 <div class="socia-cons">
@@ -838,7 +297,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
              <div class="card">
-                <img src="/img/daybel.jpg" alt="Chef6">
+                <img src="img/daybel.jpg" alt="Chef6">
                 <h3>Daybel Rivas</h3>
                 <p>Experto en ensalada de pepino</p>
                 <div class="socia-cons">
@@ -849,7 +308,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
              <div class="card">
-                <img src="/img/montes.jpg" alt="Chef7">
+                <img src="img/montes.jpg" alt="Chef7">
                 <h3>Maria Montes</h3>
                 <p>Experto en ensala de lechuga</p>
                 <div class="socia-cons">
@@ -860,7 +319,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
              <div class="card">
-                <img src="/img/zaymon.jpg" alt="Chef8">
+                <img src="img/zaymon.jpg" alt="Chef8">
                 <h3>Saymon Matias</h3>
                 <p>Experto en Ensalada de brocoli</p>
                 <div class="socia-cons">
@@ -870,7 +329,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                  </div>
             </div>
             <div class="card">
-                <img src="/img/mario.jpg" alt="Chef9">
+                <img src="img/mario.jpg" alt="Chef9">
                 <h3>Mario Rivera</h3>
                 <p>Experto en ensala de espinacas</p>
                 <div class="socia-cons">
@@ -896,7 +355,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
 
          <div class="comentarios-grid">
             <div class="card-y">
-                <img src="/img/comentario1.jpg" alt="Cliente1">
+                <img src="img/comentario1.jpg" alt="Cliente1">
                 <h4>Carolina Sanchez</h4>
                 <p>Una experiencia unica el mejor restaurante.</p>
                 <span>⭐⭐⭐⭐⭐</span>
@@ -905,7 +364,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
                 </div>
             </div>
             <div class="card-y">
-                <img src="/img/comenntario2.jpg" alt="Cliente2">
+                <img src="img/comenntario2.jpg" alt="Cliente2">
                 <h4>Yarleny Segura</h4>
                 <p>Definitivamente un buen servicio y la comida uff.</p>
                 <span>⭐⭐⭐⭐⭐</span>
@@ -915,7 +374,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
          </div>
 
          <div class="card-y">
-                <img src="/img/Comentario3.jpg" alt="Cliente3">
+                <img src="img/Comentario3.jpg" alt="Cliente3">
                 <h4>Maria Polanco</h4>
                 <p>Un excelente servicio por parte de este restaurante 10/10</p>
                 <span>⭐⭐⭐⭐⭐</span>
@@ -925,7 +384,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
       </div>
 
       <div class="card-y">
-                <img src="/img/comentario4.jpg" alt="Cliente4">
+                <img src="img/comentario4.jpg" alt="Cliente4">
                 <h4>David Ramos</h4>
                 <p>La mejor comida vegetariana que sabrosura me encanto</p>
                 <span>⭐⭐⭐⭐⭐</span>
@@ -935,7 +394,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
             <div class="card-y">
-                <img src="/img/Comentario5.jpg" alt="Cliente5">
+                <img src="img/Comentario5.jpg" alt="Cliente5">
                 <h4>Jetter Capellan</h4>
                 <p>Muy buen servicio me encanto con gusto vuelvo aqui</p>
                 <span>⭐⭐⭐⭐⭐</span>
@@ -945,7 +404,7 @@ En 2026, entendemos que ser vegetariano no es una "opción de menú", es una exp
             </div>
 
             <div class="card-y">
-                <img src="/img/comentario6.jpg" alt="Cliente6">
+                <img src="img/comentario6.jpg" alt="Cliente6">
                 <h4>Yeismer Rodriguez</h4>
                 <p>UN experiencia Inimaginable wao 10/10</p>
                 <span>⭐⭐⭐⭐⭐</span>

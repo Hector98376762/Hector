@@ -1308,266 +1308,579 @@
     </footer>
 
     <script>
-        // ===== JAVASCRIPT PARA MEJORAR LA INTERACTIVIDAD =====
+        function toggleMenu() {
+    const isOpen = menuLinks.classList.contains('active');
+    
+    if (isOpen) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
+}
 
-        // 1. MENÚ HAMBURGUESA
-        const menuToggle = document.getElementById('menuToggle');
-        const menuLinks = document.getElementById('menuLinks');
+// Función para abrir menú
+function openMenu() {
+    menuLinks.classList.add('active');
+    menuToggle.innerHTML = '<i class="bi bi-x-lg"></i>';
+    document.body.style.overflow = 'hidden'; // Evitar scroll cuando menú está abierto
+}
 
-        menuToggle.addEventListener('click', function() {
-            menuLinks.classList.toggle('active');
-            // Cambiar ícono
-            if (menuLinks.classList.contains('active')) {
-                menuToggle.innerHTML = '<i class="bi bi-x-lg"></i>';
-            } else {
-                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
-            }
-        });
+// Función para cerrar menú
+function closeMenu() {
+    menuLinks.classList.remove('active');
+    menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+    document.body.style.overflow = ''; // Restaurar scroll
+}
 
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('.menu-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                menuLinks.classList.remove('active');
-                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
-            });
-        });
+// Evento para el botón hamburguesa
+menuToggle.addEventListener('click', function(e) {
+    e.stopPropagation(); // Evitar que el clic se propague
+    toggleMenu();
+});
 
-        // 2. SCROLL TO TOP
-        const scrollTopBtn = document.getElementById('scrollTop');
-
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // 3. HEADER AL HACER SCROLL
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(58, 90, 64, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-            } else {
-                header.style.backgroundColor = '#3a5a40';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.8)';
-            }
-        });
-
-        // 4. BOTONES DEL HERO
-        document.getElementById('verMenuBtn').addEventListener('click', function() {
-            document.querySelector('#Menu').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-
-        document.getElementById('reservarBtn').addEventListener('click', function() {
-            document.querySelector('#Contactos').scrollIntoView({
-                behavior: 'smooth'
-            });
-            showNotification('Completa el formulario para reservar tu mesa', 'success');
-        });
-
-        // 5. BOTONES DE PEDIR EN EL MENÚ
-        document.querySelectorAll('.pedir-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.card');
-                const itemName = card.querySelector('h3').textContent;
-                const price = card.querySelector('.precio').textContent;
-                
-                // Animación del botón
-                this.textContent = '¡Agregado!';
-                this.style.backgroundColor = '#2ecc71';
-                this.disabled = true;
-                
-                // Mostrar notificación
-                showNotification(Agregaste ${itemName} ${price} al carrito, 'success');
-                
-                // Restaurar botón después de 2 segundos
-                setTimeout(() => {
-                    this.textContent = 'Pedir';
-                    this.style.backgroundColor = '#3a5a40';
-                    this.disabled = false;
-                }, 2000);
-            });
-        });
-
-        // 6. VALIDACIÓN DEL FORMULARIO
-        const reservaForm = document.getElementById('reservaForm');
-        if (reservaForm) {
-            reservaForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Validar campos
-                const nombre = this.querySelector('input[type="text"]').value;
-                const email = this.querySelector('input[type="email"]').value;
-                const personas = this.querySelector('select').value;
-                const fecha = this.querySelector('input[type="date"]').value;
-                const hora = this.querySelector('input[type="time"]').value;
-                
-                if (!nombre || !email || !personas || !fecha || !hora) {
-                    showNotification('Por favor, completa todos los campos obligatorios', 'error');
-                    return;
-                }
-                
-                // Validar email
-                if (!isValidEmail(email)) {
-                    showNotification('Por favor, ingresa un email válido', 'error');
-                    return;
-                }
-                
-                // Cambiar texto del botón
-                const submitBtn = this.querySelector('.btn-reservar');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Enviando...';
-                submitBtn.disabled = true;
-                
-                // Simular envío
-                setTimeout(() => {
-                    showNotification('¡Reserva enviada con éxito! Te contactaremos pronto.', 'success');
-                    this.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
-            });
-        }
-
-        // 7. FUNCIÓN PARA MOSTRAR NOTIFICACIONES
-        function showNotification(message, type = 'success') {
-            // Eliminar notificación existente
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => existingNotification.remove(), 300);
-            }
-            
-            // Crear nueva notificación
-            const notification = document.createElement('div');
-            notification.className = notification ${type};
-            notification.innerHTML = `
-                <span>${message}</span>
-                <button class="close-notification"><i class="bi bi-x"></i></button>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Botón para cerrar
-            notification.querySelector('.close-notification').addEventListener('click', function() {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            });
-            
-            // Auto-eliminar después de 5 segundos
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.style.animation = 'slideOut 0.3s ease';
-                    setTimeout(() => notification.remove(), 300);
-                }
-            }, 5000);
-        }
-
-        // 8. VALIDAR EMAIL
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // 9. ANIMACIÓN DE TARJETAS AL SCROLL
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Aplicar a tarjetas
-        document.querySelectorAll('.card, .card-chef, .card-y').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(element);
-        });
-
-        // 10. EFECTO EN LAS ESTRELLAS
-        document.querySelectorAll('.card-y span').forEach(stars => {
-            stars.addEventListener('mouseover', function() {
-                this.style.transform = 'scale(1.1)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            
-            stars.addEventListener('mouseout', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-
-        // 11. BOTONES "LEER MÁS"
-        document.querySelectorAll('.btn-m button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.card-y');
-                const cliente = card.querySelector('h4').textContent;
-                showNotification(Más información sobre ${cliente}, 'success');
-            });
-        });
-
-        // 12. CONTADOR DE VISITAS SIMPLE
-        let visitCount = localStorage.getItem('vegoodVisitCount') || 0;
-        visitCount = parseInt(visitCount) + 1;
-        localStorage.setItem('vegoodVisitCount', visitCount);
+// Cerrar menú al hacer clic en un enlace
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        closeMenu();
         
-        console.log(¡Bienvenido a VEGOOD! Esta es tu visita número ${visitCount});
-
-        // 13. FECHA MÍNIMA EN EL FORMULARIO (hoy)
-        const fechaInput = document.querySelector('input[type="date"]');
-        if (fechaInput) {
-            const today = new Date().toISOString().split('T')[0];
-            fechaInput.min = today;
+        // Scroll suave a la sección
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith('#')) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                setTimeout(() => {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 300); // Pequeña pausa para que se cierre el menú primero
+            }
         }
+    });
+});
 
-        // 14. EFECTO HOVER EN ÍCONOS SOCIALES
-        document.querySelectorAll('.socia-cons i, .footer-social a').forEach(icon => {
-            icon.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px)';
-            });
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', function(event) {
+    const isClickInsideMenu = menuLinks.contains(event.target);
+    const isClickOnToggle = menuToggle.contains(event.target);
+    
+    if (!isClickInsideMenu && !isClickOnToggle && menuLinks.classList.contains('active')) {
+        closeMenu();
+    }
+});
+
+// Cerrar menú con tecla ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && menuLinks.classList.contains('active')) {
+        closeMenu();
+    }
+});
+
+// 2. DETECTAR TAMAÑO DE PANTALLA Y AJUSTAR MENÚ
+function handleResize() {
+    if (window.innerWidth > 768) {
+        // Si es pantalla grande, asegurar que el menú esté visible
+        menuLinks.classList.remove('active');
+        menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+        document.body.style.overflow = '';
+    }
+}
+
+// Escuchar cambios de tamaño de ventana
+window.addEventListener('resize', handleResize);
+
+// 3. MEJORAR SCROLL DEL HEADER
+const header = document.getElementById('header');
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Efecto de transparencia al hacer scroll
+    if (scrollTop > 100) {
+        header.style.backgroundColor = 'rgba(58, 90, 64, 0.95)';
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+        
+        // Ocultar/mostrar header al hacer scroll
+        if (scrollTop > lastScrollTop && scrollTop > 200) {
+            // Scrolling down - ocultar header
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up - mostrar header
+            header.style.transform = 'translateY(0)';
+        }
+    } else {
+        header.style.backgroundColor = '#3a5a40';
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.8)';
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// 4. SCROLL SUAVE MEJORADO
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            // Calcular posición considerando el header fijo
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight;
             
-            icon.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
-        });
+        }
+    });
+});
 
-        // 15. CERRAR MENÚ AL HACER CLIC FUERA
-        document.addEventListener('click', function(event) {
-            if (!menuToggle.contains(event.target) && !menuLinks.contains(event.target)) {
-                menuLinks.classList.remove('active');
-                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+// 5. BOTÓN SCROLL TO TOP MEJORADO
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+
+scrollTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// 6. ANIMACIÓN DE ELEMENTOS AL SCROLL (LAZY LOAD)
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, observerOptions);
+
+// Observar elementos del menú y tarjetas
+document.querySelectorAll('.card, .card-chef, .card-y').forEach(element => {
+    element.classList.add('fade-up');
+    observer.observe(element);
+});
+
+// 7. FUNCIÓN PARA MOSTRAR NOTIFICACIONES MEJORADA
+function showNotification(message, type = 'success', duration = 5000) {
+    // Eliminar notificaciones existentes
+    document.querySelectorAll('.notification').forEach(notification => {
+        notification.remove();
+    });
+    
+    // Crear nueva notificación
+    const notification = document.createElement('div');
+    notification.className = notification ${type};
+    
+    // Ícono según tipo
+    const icon = type === 'success' ? 'bi-check-circle' : 'bi-exclamation-triangle';
+    
+    notification.innerHTML = `
+        <i class="bi ${icon}"></i>
+        <span>${message}</span>
+        <button class="close-notification"><i class="bi bi-x"></i></button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animación de entrada
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+        notification.style.opacity = '1';
+    }, 10);
+    
+    // Botón para cerrar
+    notification.querySelector('.close-notification').addEventListener('click', function() {
+        closeNotification(notification);
+    });
+    
+    // Auto-cerrar después del tiempo especificado
+    const autoClose = setTimeout(() => {
+        closeNotification(notification);
+    }, duration);
+    
+    // Función para cerrar notificación
+    function closeNotification(notificationElement) {
+        notificationElement.style.transform = 'translateX(100%)';
+        notificationElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            if (notificationElement.parentElement) {
+                notificationElement.remove();
+            }
+        }, 300);
+    }
+}
+
+// 8. BOTONES DEL MENÚ (PEDIR) - MEJORADO
+document.querySelectorAll('.btn-x button').forEach((button, index) => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const card = this.closest('.card');
+        const itemName = card.querySelector('h3').textContent;
+        const price = card.querySelector('.precio').textContent;
+        
+        // Animación del botón
+        const originalText = this.textContent;
+        const originalBgColor = this.style.backgroundColor;
+        
+        this.textContent = '¡Agregado!';
+        this.style.backgroundColor = '#2ecc71';
+        this.disabled = true;
+        
+        // Efecto visual en la tarjeta
+        card.style.transform = 'scale(1.05)';
+        card.style.boxShadow = '0 15px 30px rgba(46, 204, 113, 0.3)';
+        
+        // Mostrar notificación
+        showNotification(✅ ${itemName} ${price} agregado al pedido, 'success');
+        
+        // Sonido de confirmación (opcional)
+        playClickSound();
+        
+        // Restaurar después de 2 segundos
+        setTimeout(() => {
+            this.textContent = originalText;
+            this.style.backgroundColor = originalBgColor || '';
+            this.disabled = false;
+            
+            card.style.transform = '';
+            card.style.boxShadow = '';
+        }, 2000);
+        
+        // Guardar en localStorage (carrito)
+        addToCart(itemName, price);
+    });
+});
+
+// 9. FUNCIÓN PARA AÑADIR AL CARRITO
+function addToCart(itemName, price) {
+    let cart = JSON.parse(localStorage.getItem('vegoodCart')) || [];
+    
+    const item = {
+        id: Date.now(),
+        name: itemName,
+        price: parseFloat(price.replace('$ ', '')),
+        quantity: 1,
+        timestamp: new Date().toISOString()
+    };
+    
+    // Verificar si ya existe en el carrito
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.name === itemName);
+    
+    if (existingItemIndex > -1) {
+        cart[existingItemIndex].quantity += 1;
+    } else {
+        cart.push(item);
+    }
+    
+    localStorage.setItem('vegoodCart', JSON.stringify(cart));
+    
+    // Actualizar contador del carrito (si existe)
+    updateCartCounter();
+}
+
+// 10. CONTADOR DE CARRITO
+function updateCartCounter() {
+    const cart = JSON.parse(localStorage.getItem('vegoodCart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    // Buscar o crear contador en el header
+    let cartCounter = document.querySelector('.cart-counter');
+    
+    if (!cartCounter) {
+        cartCounter = document.createElement('span');
+        cartCounter.className = 'cart-counter';
+        cartCounter.style.cssText = `
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        `;
+        
+        // Añadir al logo o crear icono de carrito
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.style.position = 'relative';
+            logo.appendChild(cartCounter);
+        }
+    }
+    
+    cartCounter.textContent = totalItems;
+    cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+}
+
+// 11. SONIDO DE CLICK (OPCIONAL)
+function playClickSound() {
+    try {
+        // Crear audio context para sonido simple
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = 800;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.1);
+    } catch (e) {
+        console.log('Audio no soportado');
+    }
+}
+
+// 12. INICIALIZACIÓN AL CARGAR LA PÁGINA
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('VEGOOD - JavaScript cargado correctamente');
+    
+    // Inicializar contador del carrito
+    updateCartCounter();
+    
+    // Añadir estilos CSS dinámicos para animaciones
+    addDynamicStyles();
+    
+    // Prevenir envío de formulario por defecto
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Formulario enviado correctamente', 'success');
+        });
+    });
+    
+    // Efecto hover en tarjetas del menú
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.3s ease';
+        });
+    });
+});
+
+// 13. AÑADIR ESTILOS CSS DINÁMICOS
+function addDynamicStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Animaciones para elementos */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-up.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Efecto de carga para imágenes */
+        .card img, .card-chef img, .card-y img {
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover img, .card-chef:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Transición suave para header */
+        .header {
+            transition: all 0.3s ease;
+        }
+        
+        /* Estilos para notificaciones */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #3a5a40, #2ecc71);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 350px;
+            z-index: 9999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .notification.error {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+        }
+        
+        .notification i {
+            font-size: 1.2rem;
+        }
+        
+        .close-notification {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: auto;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+        
+        .close-notification:hover {
+            opacity: 1;
+        }
+        
+        /* Responsive para notificaciones */
+        @media (max-width: 768px) {
+            .notification {
+                top: 80px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+        
+        /* Estilos para menú móvil */
+        .menu-links {
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Prevenir scroll cuando menú está abierto */
+        body.no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+    `;
+    
+    document.head.appendChild(style);
+}
+
+// 14. DETECTAR CLICS EN REDES SOCIALES
+document.querySelectorAll('.socia-cons i, .footer-social a').forEach(socialIcon => {
+    socialIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        const platform = this.classList.contains('bi-facebook') ? 'Facebook' :
+                       this.classList.contains('bi-instagram') ? 'Instagram' :
+                       this.classList.contains('bi-whatsapp') ? 'WhatsApp' : 'Red Social';
+        
+        showNotification(¡Síguenos en ${platform} para más novedades!, 'success', 3000);
+    });
+});
+
+// 15. MEJORAR EXPERIENCIA DE FORMULARIO
+const formInputs = document.querySelectorAll('.form-control');
+formInputs.forEach(input => {
+    // Efecto focus
+    input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'translateY(-2px)';
+    });
+    
+    // Efecto blur
+    input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'translateY(0)';
+    });
+    
+    // Validación en tiempo real para email
+    if (input.type === 'email') {
+        input.addEventListener('input', function() {
+            if (this.value && !isValidEmail(this.value)) {
+                this.style.borderColor = '#e74c3c';
+                this.style.boxShadow = '0 0 0 2px rgba(231, 76, 60, 0.2)';
+            } else {
+                this.style.borderColor = '';
+                this.style.boxShadow = '';
             }
         });
+    }
+});
 
-        // 16. INICIALIZACIÓN
-        window.addEventListener('DOMContentLoaded', function() {
-            console.log('VEGOOD - Página completamente cargada y funcional');
-            
-            // Asegurar que el header tenga el color correcto al cargar
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(58, 90, 64, 0.95)';
-            }
-        });
+// 16. FUNCIÓN DE VALIDACIÓN DE EMAIL
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// 17. CONTROL DE ERRORES
+window.addEventListener('error', function(e) {
+    console.error('Error en la aplicación:', e.error);
+    showNotification('Ocurrió un error inesperado', 'error');
+});
+
+// 18. MEJORAR DESEMPEÑO EN MÓVILES
+let resizeTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResize, 250); // Debounce
+});
+
+// 19. PRELOAD DE IMÁGENES (MEJORA DE CARGA)
+function preloadImages() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (!img.complete) {
+            img.style.opacity = '0';
+            img.addEventListener('load', function() {
+                this.style.transition = 'opacity 0.5s ease';
+                this.style.opacity = '1';
+            });
+        }
+    });
+}
+
+// Iniciar preload cuando la página esté cargada
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadImages);
+} else {
+    preloadImages();
+}
+
+// 20. FINALIZACIÓN - MOSTRAR MENSAJE DE BIENVENIDA
+setTimeout(() => {
+    console.log('🎉 VEGOOD - Restaurante Vegetariano 🥗');
+    console.log('🚀 JavaScript optimizado cargado');
+    console.log('📱 Menú responsive activado');
+    console.log('🛒 Sistema de carrito listo');
+}, 1000);
+        
     </script>
 </body>
 </html>

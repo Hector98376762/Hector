@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Master | Comida Rápida Premium</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary: #ff6b00;
+            --secondary: #ff9500;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --success: #28a745;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: var(--dark);
+        }
+        
+        .title-font {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        
+        /* Navbar */
+        .navbar {
+            padding: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary);
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Botones */
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e05a00;
+            border-color: #e05a00;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-light:hover {
+            color: var(--dark);
+        }
+        
+        /* Secciones */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 5px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        
+        /* About */
+        .about-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Menu */
+        .menu-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-card:hover .menu-img {
+            transform: scale(1.1);
+        }
+        
+        .badge-price {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 50px;
+        }
+        
+        /* Chefs */
+        .chef-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chef-img {
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .chef-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            transition: all 0.5s;
+        }
+        
+        .chef-card:hover .chef-overlay {
+            bottom: 0;
+        }
+        
+        .chef-card:hover .chef-img {
+            transform: scale(1.1);
+        }
+        
+        .social-icons {
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Testimonios */
+        .testimonial-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin: 15px;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 107, 0, 0.2);
+        }
+        
+        .rating {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Pedidos */
+        .order-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+        }
+        
+        .order-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        
+        .order-card:hover {
+            background-color: rgba(255, 107, 0, 0.2);
+            transform: translateY(-10px);
+        }
+        
+        /* Carrito */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+            transition: right 0.3s;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.show {
+            right: 0;
+        }
+        
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1040;
+            display: none;
+        }
+        
+        .cart-overlay.show {
+            display: block;
+        }
+        
+        .cart-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+        }
+        
+        /* Mapa */
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 20px;
+        }
+        
+        .footer-links h4 {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Animaciones */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cart-sidebar {
+                width: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding: 150px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .cart-sidebar {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+ <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand title-font" href="#">Burger <span>Master</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#chefs">Chefs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#order">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button class="btn btn-outline-light position-relative" id="cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-content animate_animated animate_fadeInLeft">
+                        <h1 class="hero-title title-font">Las Mejores Hamburguesas Artesanales</h1>
+                        <p class="hero-subtitle">Ingredientes frescos, sabores explosivos y una experiencia única en cada bocado.</p>
+                        <div class="d-flex gap-3">
+                            <a href="#menu" class="btn btn-primary btn-lg">Ver Menú</a>
+                            <a href="#order" class="btn btn-outline-light btn-lg">Pedir Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-font">Nuestra Historia</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-img animate_animated animate_fadeIn">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nuestro restaurante" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ps-lg-5 animate_animated animate_fadeIn">
+                        <h3 class="mb-4">Más que una hamburguesa, una experiencia</h3>
+                        <p>Fundado en 2010, Burger Master nació de la pasión por crear hamburguesas que superen todas las expectativas. Nuestro fundador, el chef Michael Rodríguez, quería llevar el concepto de comida rápida a un nivel gourmet.</p>
+                        <p class="mb-4">Hoy, seguimos comprometidos con los mismos principios: ingredientes locales de la más alta calidad, panes horneados diariamente y carnes 100% premium seleccionadas por nuestros expertos.</p>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3 text-primary">
+                                        <i class="fas fa-check-circle fa-2x"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Calidad Premium</h5>
+                                        <p class="mb-0">Ingredientes seleccionados</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3 text-primary">
+                                        <i class="fas fa-bread-slice fa-2x"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Pan Fresco</h5>
+                                        <p class="mb-0">Horneado diariamente</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3 text-primary">
+                                        <i class="fas fa-leaf fa-2x"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Opciones Veganas</h5>
+                                        <p class="mb-0">Deliciosas alternativas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3 text-primary">
+                                        <i class="fas fa-truck fa-2x"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Delivery Express</h5>
+                                        <p class="mb-0">En menos de 30 min</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section bg-light" id="menu">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-font">Nuestro Menú</h2>
+            </div>
+            
+            <!-- Menu Tabs -->
+            <ul class="nav nav-pills justify-content-center mb-5" id="menu-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="burgers-tab" data-bs-toggle="pill" data-bs-target="#burgers" type="button">Hamburguesas</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sides-tab" data-bs-toggle="pill" data-bs-target="#sides" type="button">Acompañamientos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="drinks-tab" data-bs-toggle="pill" data-bs-target="#drinks" type="button">Bebidas</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="desserts-tab" data-bs-toggle="pill" data-bs-target="#desserts" type="button">Postres</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="menu-tabContent">
+                <!-- Burgers Tab -->
+                <div class="tab-pane fade show active" id="burgers" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Clásica Master">
+                                    <span class="badge-price">$8.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Clásica Master</h5>
+                                    <p class="card-text">Carne 200g, queso cheddar, lechuga, tomate, cebolla y salsa especial.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Clásica Master" data-price="8.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Doble Queso">
+                                    <span class="badge-price">$10.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Doble Queso</h5>
+                                    <p class="card-text">Doble carne, doble queso cheddar, bacon crujiente y salsa BBQ.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Doble Queso" data-price="10.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Picante Master">
+                                    <span class="badge-price">$9.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Picante Master</h5>
+                                    <p class="card-text">Carne 200g, queso pepper jack, jalapeños, salsa picante y mayonesa de chipotle.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Picante Master" data-price="9.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Vegana Deluxe">
+                                    <span class="badge-price">$9.49</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Vegana Deluxe</h5>
+                                    <p class="card-text">Hamburguesa de garbanzos, aguacate, lechuga, tomate y mayonesa vegana.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Vegana Deluxe" data-price="9.49">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="BBQ Master">
+                                    <span class="badge-price">$11.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">BBQ Master</h5>
+                                    <p class="card-text">Doble carne, bacon, aros de cebolla, queso americano y salsa BBQ casera.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="BBQ Master" data-price="11.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Trufa Master">
+                                    <span class="badge-price">$12.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Trufa Master</h5>
+                                    <p class="card-text">Carne wagyu, queso brie, hongos salteados, rúcula y mayonesa de trufa.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Trufa Master" data-price="12.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sides Tab -->
+                <div class="tab-pane fade" id="sides" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Papas Clásicas">
+                                    <span class="badge-price">$3.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Papas Clásicas</h5>
+                                    <p class="card-text">Papas fritas crujientes con sal marina y perejil.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Papas Clásicas" data-price="3.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Papas BBQ">
+                                    <span class="badge-price">$4.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Papas BBQ</h5>
+                                    <p class="card-text">Papas fritas con salsa BBQ, bacon y queso derretido.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Papas BBQ" data-price="4.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1606755456206-b25206bfa433?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Aros de Cebolla">
+                                    <span class="badge-price">$4.49</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Aros de Cebolla</h5>
+                                    <p class="card-text">Crujientes aros de cebolla empanizados con salsa ranch.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Aros de Cebolla" data-price="4.49">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Drinks Tab -->
+                <div class="tab-pane fade" id="drinks" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Refrescos Artesanales">
+                                    <span class="badge-price">$2.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Refrescos Artesanales</h5>
+                                    <p class="card-text">Variedad de sabores: cola, limón, naranja y frutos rojos.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Refresco Artesanal" data-price="2.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Cervezas Locales">
+                                    <span class="badge-price">$4.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Cervezas Locales</h5>
+                                    <p class="card-text">Selección de cervezas artesanales de la región.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Cerveza Local" data-price="4.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Batidos Naturales">
+                                    <span class="badge-price">$3.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Batidos Naturales</h5>
+                                    <p class="card-text">Fresa, mango, plátano o mezcla de frutas con leche o yogurt.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Batido Natural" data-price="3.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desserts Tab -->
+                <div class="tab-pane fade" id="desserts" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Brownie Master">
+                                    <span class="badge-price">$4.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Brownie Master</h5>
+                                    <p class="card-text">Brownie de chocolate con nueces y helado de vainilla.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Brownie Master" data-price="4.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Cheesecake">
+                                    <span class="badge-price">$5.49</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Cheesecake</h5>
+                                    <p class="card-text">Clásico cheesecake con topping de frutos rojos.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Cheesecake" data-price="5.49">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="menu-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top menu-img" alt="Helado Artesanal">
+                                    <span class="badge-price">$3.99</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Helado Artesanal</h5>
+                                    <p class="card-text">Vainilla, chocolate, fresa o cookies & cream.</p>
+                                    <button class="btn btn-sm btn-primary add-to-cart" data-item="Helado Artesanal" data-price="3.99">Añadir al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chefs Section -->
+    <section class="section" id="chefs">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-font">Nuestros Chefs</h2>
+                <p class="lead">Conoce al talentoso equipo detrás de nuestras creaciones</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="chef-card">
+                        <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="chef-img img-fluid" alt="Chef 1">
+                        <div class="chef-overlay">
+                            <h4>Michael Rodríguez</h4>
+                            <p class="text-muted">Chef Ejecutivo</p>
+                            <p>Especialista en carnes y técnicas de cocción perfecta.</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="chef-card">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="chef-img img-fluid" alt="Chef 2">
+                        <div class="chef-overlay">
+                            <h4>Sarah Johnson</h4>
+                            <p class="text-muted">Pastelera</p>
+                            <p>Maestra en postres y panes artesanales.</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="chef-card">
+                        <img src="https://images.unsplash.com/photo-1600566752225-5376a8d03290?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="chef-img img-fluid" alt="Chef 3">
+                        <div class="chef-overlay">
+                            <h4>Carlos Mendoza</h4>
+                            <p class="text-muted">Chef de Salsas</p>
+                            <p>Creador de nuestras salsas secretas y combinaciones únicas.</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="chef-card">
+                        <img src="" class="chef-img img-fluid" alt="Chef 4">
+                        <div class="chef-overlay">
+                            <h4>Emma Chen</h4>
+                            <p class="text-muted">Chef Vegana</p>
+                            <p>Especialista en opciones vegetarianas y veganas gourmet.</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-font">Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card animate_animated animate_fadeInUp">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img me-3" alt="Cliente 1">
+                            <div>
+                                <h5 class="mb-0">Laura Martínez</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"Las mejores hamburguesas que he probado en mi vida. La Trufa Master es simplemente increíble, vale cada centavo. El servicio es rápido y el ambiente muy acogedor."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card animate_animated animatefadeInUp animate_delay-1s">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-img me-3" alt="Cliente 2">
+                            <div>
+                                <h5 class="mb-0">David González</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"Soy fanático de las hamburguesas y Burger Master ha elevado el estándar. La combinación de sabores en la Picante Master es perfecta. ¡Y las papas BBQ son adictivas!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card animate_animated animatefadeInUp animate_delay-2s">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3" alt="Cliente 3">
+                            <div>
+                                <h5 class="mb-0">Ana Sánchez</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"Como vegetariana, a veces es difícil encontrar opciones sabrosas. La Vegana Deluxe es excepcional, ni extraño la carne. El brownie también es el mejor postre que he probado."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="section order-section" id="order">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-font">Haz tu pedido</h2>
+                <p class="lead text-white">Disfruta de Burger Master donde quieras</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="order-card mb-4">
+                        <h3 class="mb-4">Delivery</h3>
+                        <p>Recibe tus hamburguesas favoritas en la comodidad de tu hogar en menos de 30 minutos.</p>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-motorcycle me-3 fa-2x"></i>
+                            <div>
+                                <h5 class="mb-0">Zonas de entrega</h5>
+                                <p class="mb-0">Toda el área metropolitana</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-clock me-3 fa-2x"></i>
+                            <div>
+                                <h5 class="mb-0">Horario</h5>
+                                <p class="mb-0">Lunes a Domingo: 11:00 AM - 10:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-dollar-sign me-3 fa-2x"></i>
+                            <div>
+                                <h5 class="mb-0">Costo de envío</h5>
+                                <p class="mb-0">$2.99 (Gratis en pedidos mayores a $25)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="order-card">
+                        <h3 class="mb-4">Reservaciones</h3>
+                        <p>Reserva una mesa en nuestro restaurante para disfrutar de la experiencia completa.</p>
+                        <form id="reservation-form">
+                            <div class="mb-3">
+                                <label for="reservation-name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="reservation-name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reservation-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="reservation-email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reservation-phone" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="reservation-phone" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="reservation-date" class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" id="reservation-date" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="reservation-time" class="form-label">Hora</label>
+                                    <input type="time" class="form-control" id="reservation-time" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reservation-guests" class="form-label">Número de personas</label>
+                                <select class="form-select" id="reservation-guests" required>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 personas</option>
+                                    <option value="3">3 personas</option>
+                                    <option value="4">4 personas</option>
+                                    <option value="5">5 personas</option>
+                                    <option value="6">6 personas</option>
+                                    <option value="7">7 personas</option>
+                                    <option value="8">8+ personas</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Reservar Mesa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-font">Contacto</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-5">
+                        <h3 class="mb-4">Información de contacto</h3>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-map-marker-alt me-3 mt-1 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Dirección</h5>
+                                <p class="mb-0">Av. Principal 1234, Distrito Gourmet, Ciudad</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-phone-alt me-3 mt-1 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Teléfono</h5>
+                                <p class="mb-0"><a href="tel:+18005551234" class="text-decoration-none">+1 (800) 555-1234</a></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-envelope me-3 mt-1 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Email</h5>
+                                <p class="mb-0"><a href="mailto:info@burgermaster.com" class="text-decoration-none">info@burgermaster.com</a></p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-clock me-3 mt-1 text-primary"></i>
+                            <div>
+                                <h5 class="mb-1">Horario</h5>
+                                <p class="mb-0">Lunes a Viernes: 11:00 AM - 10:00 PM<br>Sábado y Domingo: 11:00 AM - 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-4">Síguenos</h3>
+                        <div class="social-links">
+                            <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="me-2"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="map-container mb-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2152091263276!2d-73.98784492453774!3d40.75798597138938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Envíanos un mensaje</h3>
+                            <form id="contact-form">
+                                <div class="mb-3">
+                                    <label for="contact-name" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="contact-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact-email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="contact-email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact-subject" class="form-label">Asunto</label>
+                                    <input type="text" class="form-control" id="contact-subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact-message" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="contact-message" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h4>Burger Master</h4>
+                        <p>La mejor experiencia en hamburguesas gourmet desde 2010. Ingredientes frescos, sabores únicos y servicio excepcional.</p>
+                        <div class="social-links mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h4>Enlaces rápidos</h4>
+                        <ul>
+                            <li><a href="#home">Inicio</a></li>
+                            <li><a href="#about">Nosotros</a></li>
+                            <li><a href="#menu">Menú</a></li>
+                            <li><a href="#chefs">Chefs</a></li>
+                            <li><a href="#order">Pedidos</a></li>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h4>Horario</h4>
+                        <ul>
+                            <li><strong>Lunes-Viernes:</strong> 11AM - 10PM</li>
+                            <li><strong>Sábado-Domingo:</strong> 11AM - 11PM</li>
+                        </ul>
+                        <h4 class="mt-4">Delivery</h4>
+                        <ul>
+                            <li><strong>Horario:</strong> 11AM - 10PM</li>
+                            <li><strong>Teléfono:</strong> +1 (800) 555-1234</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h4>Newsletter</h4>
+                        <p>Suscríbete para recibir promociones exclusivas y novedades.</p>
+                        <form id="newsletter-form">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Tu email" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Suscribirse</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 mt-4 border-top">
+                <p class="mb-0">&copy; 2023 Burger Master. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4>Tu Carrito</h4>
+                <button class="btn btn-sm btn-outline-danger" id="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cart-items">
+                <!-- Cart items will be added here dynamically -->
+                <div class="text-center py-5">
+                    <i class="fas fa-shopping-cart fa-3x mb-3 text-muted"></i>
+                    <p class="text-muted">Tu carrito está vacío</p>
+                </div>
+            </div>
+            <div class="border-top pt-3" id="cart-summary" style="display: none;">
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Envío:</span>
+                    <span id="cart-shipping">$2.99</span>
+                </div>
+                <div class="d-flex justify-content-between fw-bold">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="btn btn-primary w-100 mt-4" id="checkout-btn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize Cart
+        let cart = [];
+        const cartBtn = document.getElementById('cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const closeCartBtn = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartSummary = document.getElementById('cart-summary');
+        const cartCount = document.getElementById('cart-count');
+
+        // Toggle Cart
+        cartBtn.addEventListener('click', toggleCart);
+        closeCartBtn.addEventListener('click', toggleCart);
+        cartOverlay.addEventListener('click', toggleCart);
+
+        function toggleCart() {
+            cartSidebar.classList.toggle('show');
+            cartOverlay.classList.toggle('show');
+        }
+
+        // Add to Cart Functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const item = this.getAttribute('data-item');
+                const price = parseFloat(this.getAttribute('data-price'));
+                
+                addToCart(item, price);
+                updateCartUI();
+                
+                // Animation feedback
+                this.innerHTML = '<i class="fas fa-check"></i> Añadido';
+                this.classList.add('btn-success');
+                setTimeout(() => {
+                    this.innerHTML = 'Añadir al carrito';
+                    this.classList.remove('btn-success');
+                    this.classList.add('btn-primary');
+                }, 1000);
+            });
+        });
+
+        function addToCart(item, price) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(cartItem => cartItem.name === item);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: item,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            // Update cart count
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        function updateCartUI() {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="fas fa-shopping-cart fa-3x mb-3 text-muted"></i>
+                        <p class="text-muted">Tu carrito está vacío</p>
+                    </div>
+                `;
+                cartSummary.style.display = 'none';
+                return;
+            }
+            
+            cartSummary.style.display = 'block';
+            
+            let cartHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                cartHTML += `
+                    <div class="cart-item">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6>${item.name}</h6>
+                                <p class="text-muted mb-0">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <div>
+                                <span class="fw-bold">$${itemTotal.toFixed(2)}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mt-2">
+                            <button class="quantity-btn decrease" data-index="${index}">-</button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button class="quantity-btn increase" data-index="${index}">+</button>
+                            <button class="btn btn-sm btn-outline-danger ms-auto remove-item" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = cartHTML;
+            
+            // Calculate shipping (free for orders over $25)
+            const shipping = subtotal >= 25 ? 0 : 2.99;
+            const total = subtotal + shipping;
+            
+            document.getElementById('cart-subtotal').textContent = $${subtotal.toFixed(2)};
+            document.getElementById('cart-shipping').textContent = shipping === 0 ? 'Gratis' : $${shipping.toFixed(2)};
+            document.getElementById('cart-total').textContent = $${total.toFixed(2)};
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.decrease').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    decreaseQuantity(index);
+                });
+            });
+            
+            document.querySelectorAll('.increase').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    increaseQuantity(index);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeItem(index);
+                });
+            });
+        }
+
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                cart.splice(index, 1);
+            }
+            updateCartCount();
+            updateCartUI();
+        }
+
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            updateCartCount();
+            updateCartUI();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            updateCartUI();
+        }
+
+        // Checkout Button
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            if (cart.length === 0) return;
+            
+            alert('¡Pedido realizado con éxito! Total: $' + 
+                document.getElementById('cart-total').textContent.substring(1));
+            
+            // Reset cart
+            cart = [];
+            updateCartCount();
+            updateCartUI();
+            toggleCart();
+        });
+
+        // Form Submissions
+        document.getElementById('reservation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Reserva realizada con éxito! Nos pondremos en contacto para confirmar.');
+            this.reset();
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Mensaje enviado con éxito! Gracias por contactarnos.');
+            this.reset();
+        });
+
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por suscribirte a nuestro newsletter!');
+            this.reset();
+        });
+
+        // Animation on Scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    const animationClass = element.classList[1];
+                    element.classList.add(animationClass);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+
+        // Initialize with animations
+        animateOnScroll();
+ </body>
+ </html>

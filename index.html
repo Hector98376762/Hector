@@ -1,587 +1,865 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-     <style>
-     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 20px 50px;
-   position: sticky;
-   z-index: 1000;
-   top: 0;
-   background-color: #3a5a40;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-   transition: background-color 0.3 ease;
-   
-}
-
-.menu-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo img {
-    width: 80px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.logo h1 {
-    font-weight: 500;
-}
-
-.menu-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3 ease, border-buttom o.3 ease;
-}
-
-.menu-links a:hover {
-  color: #a7f3a0;
-  border-bottom: 2px solid #a7f3a0;
-}
-
-.hero {
-    min-height: 90vh;
-   background: linear-gradient(
-    rgba(31,61,43,0.20),
-    rgba(31,61,43,0.20)
-   ),
-   url(https://www.arrozsos.es/wp-content/uploads/2024/10/Comida-Vegana-y-Salud.jpg);
-   background-position: center;
-   background-size: cover;
-   background-repeat: no-repeat;
-    
-}
-
-.contenedor {
-    width: 100%;
-}
-
-.contenedor h2 {
-    text-align: center;
-    font-size: 3rem;
-    color: white;
-    padding-top: 20px;
-}
-
-.contenedor p {
-    text-align: center;
-    padding-top: 10px;
-    font-size: 2rem;
-    color: white;
-}
-
-.btn {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px;
-}
-
-.btn button {
-    padding: 15px;
-    width: 112px;
-    border: none;
-    border-radius: 15px;
-    background-color: #3a5a40;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.4 ease;
-    margin: 0;
-}
-
-.btn button:hover{
-    background-color: #2ecc71;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
-}
-
-.nosotros {
-    padding: 100px 0;
-    background: #f9f9f9;
-}
-
-.nosotros h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 60px;
-}
-
-.nosotros-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-    align-items: center;
-}
-
-.nosotros img {
-    width: 100%;
-    border-radius: 20px;
-    margin-left: 15px;
-}
-
-.texto p{
-   font-size: 1.1rem;
-   line-height: 1.7;
-   margin-bottom: 20px;
-}
-
-.valores {
-    list-style: none;
-    padding: 0;
-}
-
-.valores li {
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.menu {
-    padding: 100px 0;
-    background: #f9f9f9;
-   
-}
-
-.contten {
-    max-width: 1200px;
-    margin: auto 0;
-  
-}
-
-.content h2 {
-    text-align: center;
-    font-size: 2.5rem;
-     margin-bottom: 60px;
-}
-
-.grid-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(280px , 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: #fff;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-    border-radius: 12px;
-    padding-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-
-.card {
-    position: relative;
-}
-
-.precio {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    padding: 5px 10px;
-    background-color: #2ecc71;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.card h3 {
-    padding-bottom: 5px;
-}
-
-.card p {
-    padding-bottom: 5px;
-    font-weight: 400;
-    line-height: 1.2;
-}
-
-.btn-x button{
-    width: 112px;
-    margin-top: 10px;
-    padding: 8px;
-    border-radius: 15px;
-    cursor: pointer;
-    border: none;
-    background-color: #3a5a40;
-    color: #fff;
-    transition: all 0.4 ease;
-}
-
-.btn-x button:hover {
-    background-color: #2ecc71;
-    transform: translateY(-3px);
-}
-
-.card:hover{
-    transform: translateY(-3px);
-}
-
-.chef {
-    padding: 80px 20px;
-    background: #f9f9f9;
-}
-
-.container-f {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.container-f h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
-}
-
-.card-chef {
-    padding-bottom: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-    text-align: center;
-}
-
-.card-chef img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.chef-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px , 1fr));
-    gap: 30px;
-}
-
-.card-chef h3 {
-    margin-bottom: 10px;
-}
-
-.card-chef p {
-  padding-bottom: 10px;
-}
-
-
-.socia-cons{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    font-size: 25px;
-    margin-top: 15px;
-}
-
-.bi-facebook {
-    color: #25D;
-}
-
-.bi-instagram {
-    background: linear-gradient(45deg,
-    #feda75, #fa7e1e, #d62976, #4f5bd5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.bi-whatsapp {
-    color: #2ecc71;
-}
-.socia-cons i{
-    transition: transform 0.3 ease, opacity 0.3s ease;
-    cursor: pointer;
-}
-.socia-cons i:hover {
-   transform: scale(1.2);
-   
-}
-
-.comentarios {
-    padding: 80px 20px;
-    background-color: #fff;
-    text-align: center;
-    
-}
-
-.container-0{
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    
-}
-
-.texto h2 {
-    margin-bottom: 5px;
-    font-size: 2.5rem;
-}
-
-.texto p {
-    color: #666;
-}
-
-.comentarios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(280px , 1fr));
-    gap: 30px;
-}
-
-.card-y{
-    margin-top: 30px;
-    background-color: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-    padding-bottom: 20px;
-    border-radius: 15px;
-}
-
-.card-y img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 200%;
-}
-
-.card-y h4 {
-    padding-bottom: 10px;
-    padding-top: 10px;
-
-}
-
-.card-y p {
-    color: #666;
-    padding-bottom: 10px;
-}
-
-.card-y span {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-}
-
-.card-y:hover {
-    transform: translateY(-3px);
-}
-
-.btn-m button{
-   width: 112px;
-   padding: 8px;
-   border-radius: 15px;
-   border: none;
-   margin-top: 10px;
-   background-color: #3a5a40;
-   color: #fff;
-   cursor: pointer;
-   transition: all 0.4 ease;
-}
-
-.btn-m button:hover {
-    background-color: #2ecc71;
-    transform: translateY(-3px);
-}
-
-.contactos{
-    padding: 80px 20px;
-    background: #111;
-    color: white;
-    
-}
-
-.container-s{
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-}
-
-.container-s form{
-    margin-top: 40px;
-    display: grid;
-    gap: 20px;
-}
-
-.campo {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.container-s h2 {
-    padding-bottom: 10px;
-    font-size: 2.5rem;
-}
-
-.campo label{
-    padding: 5px;
-}
-.campo input,
-.campo select,
-.campo textarea {
-    padding: 12px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-}
-
-.btn-reservar {
-    padding: 14px;
-    background: #3a5a40;
-    cursor: pointer;
-    transition: all 0.3 ease;
-    border: none;
-    font-size: 16px;
-    border-radius: 15px;
-}
-
-.btn-reservar:hover {
-    transform: translateY(-3px);
-    background-color: #2ecc71;
-}
-
-.footer {
-    background: #666;
-    color: #fff;
-    padding: 80px 20px;
-}
-
-.footer-contenedor {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-}
-
-.footer-col h3,
-.footer-col h4{
-    margin-bottom: 15px;
-}
-
-.footer-col ul{
-    list-style: none;
-    padding: 0;
-}
- .footer-col ul li {
-    margin-bottom: 8px;
- }
-
- .footer-col a {
-    text-decoration: none;
-    color: #ccc;
- }
-
- .footer-col a:hover {
-    color: #a7f3a0;
- }
-
- .footer-social a {
-    font-size: 20px;
-    margin-right: 12px;
- }
-
- .footer .bi-whatsapp{color: #1877f2;}
- .footer .bi-instagram{color: #e1306c;}
- .footer .bi-facebook {color: #1877f2;}
-
- .footer-copy {
-    text-align: center;
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 20px;
- }
-
- .hero{
-    min-height: 100vh;
- }
- @media (max-width: 768px) {
-    .hero{
-        text-align: center;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
- }
-
- @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
- }
- 
-@media (max-width: 600px) {
-    .card {
-        padding: 15px;
-    }
-}
-     </style>
-    
-        
+    <title>VEGOOD - Comida Vegetariana</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        /* TU CÓDIGO CSS ORIGINAL (corregido) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            z-index: 1000;
+            top: 0;
+            background-color: #3a5a40;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-weight: 500;
+            color: white;
+        }
+
+        .menu-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .menu-links a:hover {
+            color: #a7f3a0;
+            border-bottom: 2px solid #a7f3a0;
+        }
+
+        /* MENÚ HAMBURGUESA */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(
+                rgba(31,61,43,0.20),
+                rgba(31,61,43,0.20)
+            ),
+            url(https://www.arrozsos.es/wp-content/uploads/2024/10/Comida-Vegana-y-Salud.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contenedor {
+            width: 100%;
+            text-align: center;
+        }
+
+        .contenedor h2 {
+            font-size: 3rem;
+            color: white;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .contenedor p {
+            padding-top: 10px;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .btn button {
+            padding: 15px;
+            width: 150px;
+            border: none;
+            border-radius: 15px;
+            background-color: #3a5a40;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn button:hover {
+            background-color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
+        }
+
+        .nosotros {
+            padding: 100px 20px;
+            background: #f9f9f9;
+        }
+
+        .nosotros h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #3a5a40;
+        }
+
+        .nosotros-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nosotros img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .texto p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .valores {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .valores li {
+            margin-bottom: 10px;
+            font-weight: 500;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .valores li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .menu {
+            padding: 100px 20px;
+            background: #f9f9f9;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #3a5a40;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .precio {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            padding: 5px 10px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            padding: 15px 15px 5px;
+            font-size: 1.4rem;
+            color: #3a5a40;
+        }
+
+        .card p {
+            padding: 0 15px 15px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #666;
+        }
+
+        .btn-x button {
+            width: 120px;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: none;
+            background-color: #3a5a40;
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-x button:hover {
+            background-color: #2ecc71;
+            transform: translateY(-3px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .chef {
+            padding: 80px 20px;
+            background: #f9f9f9;
+        }
+
+        .container-f {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container-f h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #3a5a40;
+        }
+
+        .card-chef {
+            padding-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .chef-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card-chef img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-chef h3 {
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+            color: #3a5a40;
+        }
+
+        .card-chef p {
+            padding: 0 15px 15px;
+            color: #666;
+        }
+
+        .socia-cons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .bi-facebook {
+            color: #1877f2;
+        }
+
+        .bi-instagram {
+            background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #4f5bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bi-whatsapp {
+            color: #25d366;
+        }
+
+        .socia-cons i {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .socia-cons i:hover {
+            transform: scale(1.2);
+        }
+
+        .card-chef:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .comentarios {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .container-0 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .texto h2 {
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+            color: #3a5a40;
+        }
+
+        .texto p {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .comentarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card-y {
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .card-y img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid #2ecc71;
+        }
+
+        .card-y h4 {
+            padding-bottom: 10px;
+            font-size: 1.3rem;
+            color: #3a5a40;
+        }
+
+        .card-y p {
+            color: #666;
+            padding-bottom: 15px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .card-y span {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .btn-m button {
+            width: 120px;
+            padding: 10px;
+            border-radius: 15px;
+            border: none;
+            margin-top: 10px;
+            background-color: #3a5a40;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-m button:hover {
+            background-color: #2ecc71;
+            transform: translateY(-3px);
+        }
+
+        .card-y:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contactos {
+            padding: 80px 20px;
+            background: #111;
+            color: white;
+        }
+
+        .container-s {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .container-s h2 {
+            padding-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .container-s form {
+            margin-top: 40px;
+            display: grid;
+            gap: 20px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .campo label {
+            padding: 5px 0;
+            color: #ddd;
+            font-weight: 500;
+        }
+
+        .campo input,
+        .campo select,
+        .campo textarea {
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            background: #222;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .btn-reservar {
+            padding: 14px;
+            background: #3a5a40;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-reservar:hover {
+            transform: translateY(-3px);
+            background-color: #2ecc71;
+        }
+
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h3,
+        .footer-col h4 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-col p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: #a7f3a0;
+        }
+
+        .footer-social a {
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        /* SCROLL TO TOP BUTTON */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: #3a5a40;
+            transform: translateY(-5px);
+        }
+
+        /* NOTIFICACIONES */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            max-width: 350px;
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.error {
+            background-color: #e74c3c;
+        }
+
+        .close-notification {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* MEDIA QUERIES MEJORADAS */
+        @media (max-width: 992px) {
+            .nosotros-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contenedor h2 {
+                font-size: 2.5rem;
+            }
+            
+            .contenedor p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            /* MENÚ HAMBURGUESA */
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: #3a5a40;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: right 0.4s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu-links.active {
+                right: 0;
+            }
+
+            .menu-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-links a {
+                display: block;
+                padding: 15px;
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .contenedor h2 {
+                font-size: 2rem;
+            }
+
+            .contenedor p {
+                font-size: 1.3rem;
+            }
+
+            .btn {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .btn button {
+                width: 80%;
+                max-width: 250px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            .nosotros-grid {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 12px 15px;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                width: 60px;
+                height: 50px;
+            }
+
+            .contenedor h2 {
+                font-size: 1.8rem;
+            }
+
+            .contenedor p {
+                font-size: 1.2rem;
+            }
+
+            .grid-menu,
+            .chef-grid,
+            .comentarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                margin: 0 10px;
+            }
+
+            .card-y img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* SCROLL SMOOTH */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* MEJORAS PARA EL FORMULARIO */
+        .campo input:focus,
+        .campo select:focus,
+        .campo textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #2ecc71;
+        }
+
+        /* MEJORAS GENERALES */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .btn, .btn-x, .btn-m {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 <body>
-     <header class="header">
+    <!-- SCROLL TO TOP BUTTON -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <header class="header" id="header">
         <div class="logo">
-          <img src="img/vegan.fot.jpg" alt="">
-          <h1>VEGOOD</h1>
+            <img src="img/vegan.fot.jpg" alt="Logo VEGOOD">
+            <h1>VEGOOD</h1>
         </div>
+        
+        <!-- BOTÓN MENÚ HAMBURGUESA -->
+        <button class="menu-toggle" id="menuToggle">
+            <i class="bi bi-list"></i>
+        </button>
+        
         <nav>
-            <ul class="menu-links">
+            <ul class="menu-links" id="menuLinks">
                 <li><a href="#Inicio">Inicio</a></li>
                 <li><a href="#Nosotros">Nosotros</a></li>
                 <li><a href="#Menu">Menu</a></li>
                 <li><a href="#Chef">Chef</a></li>
                 <li><a href="#Comentarios">Comentarios</a></li>
-                <li><a href="#Contactos">Conctatos</a></li>
+                <li><a href="#Contactos">Contactos</a></li>
             </ul>
         </nav>
-     </header>
+    </header>
 
-     <section class="inicio" id="Inicio">
-     </section>
-
-
-    <section class="hero">
+    <section class="hero" id="Inicio">
         <div class="contenedor">
-            <h2>Bienvenidos a , VEGFOOD</h2>
+            <h2>Bienvenidos a VEGOOD</h2>
             <p>Somos un restaurante de comida vegetariana</p>
-
             <div class="btn">
-                <button>Ver menu</button>
-                <button>Pedir menu</button>
+                <button id="verMenuBtn">Ver menu</button>
+                <button id="reservarBtn">Reservar mesa</button>
             </div>
         </div>
     </section>
@@ -593,468 +871,703 @@
                 <div class="nosotros-img">
                     <img src="img/historia.vegetariana.jpg" alt="Nuestro restaurante">
                 </div>
-
                 <div class="texto">
-                   <p>
-                    Todo comenzó con un desafío: demostrar que la comida más deliciosa no viene de una línea de producción, sino de la paciencia de la tierra.
-En VEGOOD, no solo cocinamos; somos los guardianes de una tradición que mira al futuro. Nuestra historia se escribe cada mañana a las 5:00 a.m., cuando seleccionamos los tomates que aún conservan el rocío y las hierbas que darán alma a nuestros platos.
-En 2026, entendemos que ser vegetariano no es una "opción de menú", es una explosión de creatividad. Imagina una hamburguesa donde el hongo portobello se marina por 12 horas en especias secretas, o un risotto de quinoa que sabe a hogar y a innovación al mismo tiempo.
-                   </p>
-                   <ul class="valores">
-                    <li>🌱 Ingredientes naturales</li>
-                    <li>🥗 Menu balanceado</li>
-                    <li>♻️  Compromiso</li>
-                   </ul>
+                    <p>
+                        Todo comenzó con un desafío: demostrar que la comida más deliciosa no viene de una línea de producción, sino de la paciencia de la tierra.
+                        En VEGOOD, no solo cocinamos; somos los guardianes de una tradición que mira al futuro. Nuestra historia se escribe cada mañana a las 5:00 a.m., cuando seleccionamos los tomates que aún conservan el rocío y las hierbas que darán alma a nuestros platos.
+                        En 2026, entendemos que ser vegetariano no es una "opción de menú", es una explosión de creatividad. Imagina una hamburguesa donde el hongo portobello se marina por 12 horas en especias secretas, o un risotto de quinoa que sabe a hogar y a innovación al mismo tiempo.
+                    </p>
+                    <ul class="valores">
+                        <li>🌱 Ingredientes naturales</li>
+                        <li>🥗 Menu balanceado</li>
+                        <li>♻️ Compromiso</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-   <section class="menu" id="Menu">
-    <div class="content">
-        <h2>Nuestro menu</h2>
-
-        <div class="grid-menu">
-            <div class="card">
-                <img src="img/sopa de verdura.jpg" alt="Imagen1">
-                <h3>Sopa de verdura</h3>
-                <p>Deliciosa y saludable</p>
-                <span class="precio">$ 8.44</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+    <section class="menu" id="Menu">
+        <div class="content">
+            <h2>Nuestro menu</h2>
+            <div class="grid-menu">
+                <!-- TUS 18 PLATOS (manteniendo todos) -->
+                <div class="card">
+                    <img src="img/sopa de verdura.jpg" alt="Imagen1">
+                    <h3>Sopa de verdura</h3>
+                    <p>Deliciosa y saludable</p>
+                    <span class="precio">$ 8.44</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-        </div>
-        <div class="card">
-                <img src="img/brocoli.2.jpg" alt="Imagen2">
-                <h3>Brocoli</h3>
-                <p>Vegetal super nutritivo</p>
-                <span class="precio">$ 6.66</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/brocoli.2.jpg" alt="Imagen2">
+                    <h3>Brocoli</h3>
+                    <p>Vegetal super nutritivo</p>
+                    <span class="precio">$ 6.66</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-    </div>
-    <div class="card">
-                <img src="img/sopa de tomate.jpg" alt="Imagen3">
-                <h3>Sopa de tomate</h3>
-                <p>Muy buena y calientita</p>
-                <span class="precio">$ 5.77</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/sopa de tomate.jpg" alt="Imagen3">
+                    <h3>Sopa de tomate</h3>
+                    <p>Muy buena y calientita</p>
+                    <span class="precio">$ 5.77</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-</div>
-
-<div class="card">
-                <img src="img/tayota.jpg" alt="Imagen4">
-                <h3>Ensalada de tayota</h3>
-                <p>Sumamente saludable y cremosa</p>
-                <span class="precio">$ 11.55</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/tayota.jpg" alt="Imagen4">
+                    <h3>Ensalada de tayota</h3>
+                    <p>Sumamente saludable y cremosa</p>
+                    <span class="precio">$ 11.55</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
+                <div class="card">
+                    <img src="img/ensalada rusa.jpg" alt="Imagen5">
+                    <h3>Ensalada rusa</h3>
+                    <p>Super cremosa y deliciosa</p>
+                    <span class="precio">$ 4.88</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-<div class="card">
-                <img src="img/ensalada rusa.jpg" alt="Imagen5">
-                <h3>Ensalada rusa</h3>
-                <p>Super cremosa y deliciosa</p>
-                <span class="precio">$ 4.88</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/sopa de brocoli.jpg" alt="Imagen6">
+                    <h3>Sopa de brocoli</h3>
+                    <p>Muy buena y super sabrosa</p>
+                    <span class="precio">$ 12.99</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <img src="img/sopa de brocoli.jpg" alt="Imagen6">
-                <h3>Sopa de brocoli</h3>
-                <p>Muy buena y super sabrosa</p>
-                <span class="precio">$ 12.99</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de aguacate.jpg" alt="Imagen7">
+                    <h3>Ensalada de aguacate</h3>
+                    <p>Grasa buena y sabor bueno</p>
+                    <span class="precio">$ 12.77</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de aguacate.jpg" alt="Imagen7">
-                <h3>Ensalada de aguacate</h3>
-                <p>Grasa buena y sabor bueno</p>
-                <span class="precio">$ 12.77</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada verde.jpg" alt="Imagen8">
+                    <h3>Ensalada verde</h3>
+                    <p>Muy nutritiva y sabrosa</p>
+                    <span class="precio">$ 12.33</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada verde.jpg" alt="Imagen8">
-                <h3>Ensalada verde</h3>
-                <p>Muy nutritiva y sabrosa</p>
-                <span class="precio">$ 12.33</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de pepino.jpg" alt="Imagen9">
+                    <h3>Ensalada de pepino</h3>
+                    <p>Delicia en vida</p>
+                    <span class="precio">$ 12.24</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de pepino.jpg" alt="Imagen9">
-                <h3>Ensalada de pepino</h3>
-                <p>Delicia en vida</p>
-                <span class="precio">$ 12.24</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/jugo de zanahoria.jpg" alt="Imagen10">
+                    <h3>Jugo de zanahoria</h3>
+                    <p>Jugo nutritivo y Refrescante</p>
+                    <span class="precio">$ 12.99</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/jugo de zanahoria.jpg" alt="Imagen10">
-                <h3>Jugo de zanahoria</h3>
-                <p>Jugo nutritivo y Refrescante</p>
-                <span class="precio">$ 12.99</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de lechuga.jpg" alt="Imagen11">
+                    <h3>Ensalada de lechuga</h3>
+                    <p>Muy nutritiva y sin sabor</p>
+                    <span class="precio">$ 5.11</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de lechuga.jpg" alt="Imagen11">
-                <h3>Ensalada de lechuga</h3>
-                <p>Muy nutritiva y sin sabor</p>
-                <span class="precio">$ 5.11</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/jugo de ensalada verde.jpg" alt="Imagen12">
+                    <h3>Jugo de ensalada verde</h3>
+                    <p>Jugo saludable</p>
+                    <span class="precio">$ 12.66</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/jugo de ensalada verde.jpg" alt="Imagen12">
-                <h3>Jgo de ensalada verde</h3>
-                <p></p>
-                <span class="precio">$ 12.66</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de espinacas.jpg" alt="Imagen13">
+                    <h3>Ensalada de espinacas</h3>
+                    <p>Plato fino y elegante</p>
+                    <span class="precio">$ 12.99</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de espinacas.jpg" alt="Imagen13">
-                <h3>Ensalada de espinacas</h3>
-                <p>Plato fino t elegante</p>
-                <span class="precio">$ 12.99</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de atum.jpg" alt="Imagen14">
+                    <h3>Ensalada de atum</h3>
+                    <p>Plato cremado y hermoso</p>
+                    <span class="precio">$ 12.78</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de atum.jpg" alt="Imagen14">
-                <h3>Ensalada de atum</h3>
-                <p>Plato cremado y hermoso</p>
-                <span class="precio">$ 12.78</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de codito.jpg" alt="Imagen15">
+                    <h3>Ensalada de codito</h3>
+                    <p>Nuestro mejor plato</p>
+                    <span class="precio">$ 12.18</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de codito.jpg" alt="Imagen15">
-                <h3>Ensalada de codito</h3>
-                <p>Nuestro mejor plato</p>
-                <span class="precio">$ 12.18</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de macarrones.jpg" alt="Imagen16">
+                    <h3>Ensalada de macarrones</h3>
+                    <p>Cremosa, exquisita, deliciosa</p>
+                    <span class="precio">$ 12.22</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de macarrones.jpg" alt="Imagen16">
-                <h3>Ensalada de macarrones</h3>
-                <p>Cremosa , exquisita,deliciosa</p>
-                <span class="precio">$ 12.22</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de pin.jpg" alt="Imagen17">
+                    <h3>Ensalada de piña</h3>
+                    <p>Delicia en cantidad</p>
+                    <span class="precio">$ 7.30</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de pin.jpg" alt="Imagen17">
-                <h3>Ensalada de piña</h3>
-                <p>Delicia en cantidad</p>
-                <span class="precio">$ 7.30</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
+                <div class="card">
+                    <img src="img/ensalada de repollo.jpg" alt="Imagen18">
+                    <h3>Ensalada de repollo</h3>
+                    <p>Plato premium</p>
+                    <span class="precio">$ 8.99</span>
+                    <div class="btn-x">
+                        <button class="pedir-btn">Pedir</button>
+                    </div>
                 </div>
-             </div>
-             <div class="card">
-                <img src="img/ensalada de repollo.jpg" alt="Imagen18">
-                <h3>Ensalada de repollo</h3>
-                <p>Plato premium</p>
-                <span class="precio">$ 8.99</span>
-                <div class="btn-x">
-                    <button>Pedir</button>
-                </div>
-             </div>
-         </div>
-        </div>
-   </section>
-
-   <section class="chef" id="Chef">
-      <div class="container-f">
-        <h2>Nuestros chef</h2>
-        <div class="chef-grid">
-            <div class="card-chef">
-                <img src="img/hector.jpg" alt="Chef1">
-                <h3>Hector Antonio</h3>
-                <p>Experto en sopa vegetariana</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-                </div>
-            </div>
-            <div class="card">
-                <img src="img/eliezer.jpg" alt="Chef2">
-                <h3>Eliezer Paulino</h3>
-                <p>Experto en ensalada rusa</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
             </div>
         </div>
-        <div class="card">
-                <img src="img/maria.jpg" alt="Chef3">
-                <h3>Marta Vargas</h3>
-                <p>Experto en ensalada verde</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-             </div>
-      </div>
-       <div class="card">
-                <img src="img/luis.jpg" alt="Chef4">
-                <h3>Luis Segura</h3>
-                <p>Experto en ensalada de macarrones</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-              </div>
-            </div>
+    </section>
 
-            <div class="card">
-                <img src="img/jordy.jpg" alt="Chef5">
-                <h3>Jordy Ortiz</h3>
-                <p>Experto en ensalada de aguacate</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-                 </div>
-            </div>
-
-             <div class="card">
-                <img src="img/daybel.jpg" alt="Chef6">
-                <h3>Daybel Rivas</h3>
-                <p>Experto en ensalada de pepino</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-             </div>
-            </div>
-
-             <div class="card">
-                <img src="img/montes.jpg" alt="Chef7">
-                <h3>Maria Montes</h3>
-                <p>Experto en ensala de lechuga</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-                 </div>
-            </div>
-
-             <div class="card">
-                <img src="img/zaymon.jpg" alt="Chef8">
-                <h3>Saymon Matias</h3>
-                <p>Experto en Ensalada de brocoli</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
-                 </div>
-            </div>
-            <div class="card">
-                <img src="img/mario.jpg" alt="Chef9">
-                <h3>Mario Rivera</h3>
-                <p>Experto en ensala de espinacas</p>
-                <div class="socia-cons">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-whatsapp"></i>
+    <section class="chef" id="Chef">
+        <div class="container-f">
+            <h2>Nuestros chef</h2>
+            <div class="chef-grid">
+                <!-- TUS 9 CHEFS (manteniendo todos) -->
+                <div class="card-chef">
+                    <img src="img/hector.jpg" alt="Chef1">
+                    <h3>Hector Antonio</h3>
+                    <p>Experto en sopa vegetariana</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/eliezer.jpg" alt="Chef2">
+                    <h3>Eliezer Paulino</h3>
+                    <p>Experto en ensalada rusa</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/maria.jpg" alt="Chef3">
+                    <h3>Marta Vargas</h3>
+                    <p>Experto en ensalada verde</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/luis.jpg" alt="Chef4">
+                    <h3>Luis Segura</h3>
+                    <p>Experto en ensalada de macarrones</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/jordy.jpg" alt="Chef5">
+                    <h3>Jordy Ortiz</h3>
+                    <p>Experto en ensalada de aguacate</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/daybel.jpg" alt="Chef6">
+                    <h3>Daybel Rivas</h3>
+                    <p>Experto en ensalada de pepino</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/montes.jpg" alt="Chef7">
+                    <h3>Maria Montes</h3>
+                    <p>Experto en ensala de lechuga</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/zaymon.jpg" alt="Chef8">
+                    <h3>Saymon Matias</h3>
+                    <p>Experto en Ensalada de brocoli</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
+                </div>
+                <div class="card-chef">
+                    <img src="img/mario.jpg" alt="Chef9">
+                    <h3>Mario Rivera</h3>
+                    <p>Experto en ensala de espinacas</p>
+                    <div class="socia-cons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-whatsapp"></i>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-   </section>
+    </section>
 
-   <section class="comentarios" id="Comentarios">
-      <div class="container-o">
-        <div class="texto">
-        <h2>Lo que dicen nuestros clientes</h2>
-        <br>
-        <p>Testimonio de quienes han disfrutado 
-            VEGOOD
-        </p>
+    <section class="comentarios" id="Comentarios">
+        <div class="container-0">
+            <div class="texto">
+                <h2>Lo que dicen nuestros clientes</h2>
+                <p>Testimonio de quienes han disfrutado VEGOOD</p>
+            </div>
+            <div class="comentarios-grid">
+                <!-- TUS 6 COMENTARIOS (manteniendo todos) -->
+                <div class="card-y">
+                    <img src="img/comentario1.jpg" alt="Cliente1">
+                    <h4>Carolina Sanchez</h4>
+                    <p>Una experiencia unica el mejor restaurante.</p>
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <div class="btn-m">
+                        <button>Leer Mas</button>
+                    </div>
+                </div>
+                <div class="card-y">
+                    <img src="img/comenntario2.jpg" alt="Cliente2">
+                    <h4>Yarleny Segura</h4>
+                    <p>Definitivamente un buen servicio y la comida uff.</p>
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <div class="btn-m">
+                        <button>Leer Mas</button>
+                    </div>
+                </div>
+                <div class="card-y">
+                    <img src="img/Comentario3.jpg" alt="Cliente3">
+                    <h4>Maria Polanco</h4>
+                    <p>Un excelente servicio por parte de este restaurante 10/10</p>
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <div class="btn-m">
+                        <button>Leer Mas</button>
+                    </div>
+                </div>
+                <div class="card-y">
+                    <img src="img/comentario4.jpg" alt="Cliente4">
+                    <h4>David Ramos</h4>
+                    <p>La mejor comida vegetariana que sabrosura me encanto</p>
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <div class="btn-m">
+                        <button>Leer Mas</button>
+                    </div>
+                </div>
+                <div class="card-y">
+                    <img src="img/Comentario5.jpg" alt="Cliente5">
+                    <h4>Jetter Capellan</h4>
+                    <p>Muy buen servicio me encanto con gusto vuelvo aqui</p>
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <div class="btn-m">
+                        <button>Leer Mas</button>
+                    </div>
+                </div>
+                <div class="card-y">
+                    <img src="img/comentario6.jpg" alt="Cliente6">
+                    <h4>Yeismer Rodriguez</h4>
+                    <p>UN experiencia Inimaginable wao 10/10</p>
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <div class="btn-m">
+                        <button>Leer Mas</button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-         <div class="comentarios-grid">
-            <div class="card-y">
-                <img src="img/comentario1.jpg" alt="Cliente1">
-                <h4>Carolina Sanchez</h4>
-                <p>Una experiencia unica el mejor restaurante.</p>
-                <span>⭐⭐⭐⭐⭐</span>
-                <div class="btn-m">
-                <button>Leer Mas</button>
-                </div>
+    <section class="contactos" id="Contactos">
+        <div class="container-s">
+            <div class="formulario">
+                <h2>Reserva tu mesa</h2>
+                <p>Completa el formulario y asegura tu lugar</p>
+                <form class="form-reserva" id="reservaForm">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input type="text" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="campo">
+                        <label>Email</label>
+                        <input type="email" placeholder="Correo electronico" required>
+                    </div>
+                    <div class="campo">
+                        <label>Cantidad de personas</label>
+                        <select required>
+                            <option value="">Seleccione...</option>
+                            <option>1 persona</option>
+                            <option>2 personas</option>
+                            <option>3 personas</option>
+                            <option>4 personas</option>
+                            <option>5 personas</option>
+                            <option>6 personas</option>
+                            <option>7 personas</option>
+                            <option>8 personas</option>
+                            <option>9+ personas</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label>Fecha</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="campo">
+                        <label>Hora</label>
+                        <input type="time" required>
+                    </div>
+                    <div class="campo">
+                        <label>Mensaje</label>
+                        <textarea placeholder="Comentario especial"></textarea>
+                    </div>
+                    <button type="submit" class="btn-reservar">Reservar mesa</button>
+                </form>
             </div>
-            <div class="card-y">
-                <img src="img/comenntario2.jpg" alt="Cliente2">
-                <h4>Yarleny Segura</h4>
-                <p>Definitivamente un buen servicio y la comida uff.</p>
-                <span>⭐⭐⭐⭐⭐</span>
-                 <div class="btn-m">
-                <button>Leer Mas</button>
-                </div>
-         </div>
-
-         <div class="card-y">
-                <img src="img/Comentario3.jpg" alt="Cliente3">
-                <h4>Maria Polanco</h4>
-                <p>Un excelente servicio por parte de este restaurante 10/10</p>
-                <span>⭐⭐⭐⭐⭐</span>
-                 <div class="btn-m">
-                <button>Leer Mas</button>
-                </div>
-      </div>
-
-      <div class="card-y">
-                <img src="img/comentario4.jpg" alt="Cliente4">
-                <h4>David Ramos</h4>
-                <p>La mejor comida vegetariana que sabrosura me encanto</p>
-                <span>⭐⭐⭐⭐⭐</span>
-                 <div class="btn-m">
-                <button>Leer Mas</button>
-                </div>
-            </div>
-
-            <div class="card-y">
-                <img src="img/Comentario5.jpg" alt="Cliente5">
-                <h4>Jetter Capellan</h4>
-                <p>Muy buen servicio me encanto con gusto vuelvo aqui</p>
-                <span>⭐⭐⭐⭐⭐</span>
-                 <div class="btn-m">
-                <button>Leer Mas</button>
-                </div>
-            </div>
-
-            <div class="card-y">
-                <img src="img/comentario6.jpg" alt="Cliente6">
-                <h4>Yeismer Rodriguez</h4>
-                <p>UN experiencia Inimaginable wao 10/10</p>
-                <span>⭐⭐⭐⭐⭐</span>
-                 <div class="btn-m">
-                <button>Leer Mas</button>
-                </div>
-            </div>
-
-       </div>
-    </div>
-   </section>
-
-   <section class="contactos" id="Contactos">
-       <div class="container-s">
-          <div class="formulario">
-            <h2>Reserva tu mesa</h2>
-            <p>Completa el formulario y asegura tu lugar</p>
-
-            <form class="form-reserva">
-              <div class="campo">
-                <label>Nombre</label>
-                <input type="text" placeholder="Tu nombre">
-              </div>
-
-              <div class="campo">
-                <label>Email</label>
-                <input type="email" placeholder="Correo electronico">
-              </div>
-
-              <div class="campo">
-                <label>Cantidad de personas</label>
-                <select>
-                    <option>1 persona</option>
-                    <option>2 persona</option>
-                    <option>3 persona</option>
-                    <option>4 persona</option>
-                    <option>5 persona</option>
-                    <option>6 persona</option>
-                    <option>7 persona</option>
-                    <option>8 persona</option>
-                    <option>9+</option>
-                </select>
-              </div>
-
-              <div class="campo">
-                <label>Fecha</label>
-                <input type="date">
-              </div>
-
-              <div class="campo">
-                <label>Hora</label>
-                <input type="time">
-              </div>
-
-              <div class="campo">
-                <label>Mensaje</label>
-                <textarea placeholder="Comentario especial"></textarea>
-              </div>
-
-              <button class="btn-reservar">Reservar mesa</button>
-            </form>
-          </div>
-       </div>
-   </section>
-
-   <footer class="footer">
-    <div class="footer-contenedor">
-        <div class="footer-col">
-            <h3>VEGOOD</h3>
-            <P>Comida vegetariana saludable y deliciosa.</P>
         </div>
+    </section>
 
-         <div class="footer-col">
-            <h4>Enlaces</h4>
-            <ul>
-                <li><a href="#Inicio">Inicio</a></li>
-                <li><a href="#Nosotros">Nosotros</a></li>
-                <li><a href="#Menu">Menu</a></li>
-                <li><a href="#Chef">Chef</a></li>
-                <li><a href="#Comentarios">Comentarios</a></li>
-                <li><a href="#Contactos">Contactos</a></li>
-            </ul>
-         </div>
-
-
-         
-         <div class="footer-col">
-            <h4>Contactos</h4>
-            <p><i class="bi bi-telephone-forward-fill"> Santo Domingo</i></p>
-           <p><i class="bi bi-telephone-forward-fill"> 829-864-9779</i></p>
-           <p><i class="bi bi-envelope-arrow-down"> segurapolancohector@gmail.com</i></p>
-         </div>
-
-         <div class="footer-col">
-            <h4>Siguenos</h4>
-            <div class="footer-social">
-                <a href="#"><i class="bi bi-whatsapp"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
+    <footer class="footer">
+        <div class="footer-contenedor">
+            <div class="footer-col">
+                <h3>VEGOOD</h3>
+                <p>Comida vegetariana saludable y deliciosa.</p>
             </div>
-         </div>
-    </div>
+            <div class="footer-col">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#Inicio">Inicio</a></li>
+                    <li><a href="#Nosotros">Nosotros</a></li>
+                    <li><a href="#Menu">Menu</a></li>
+                    <li><a href="#Chef">Chef</a></li>
+                    <li><a href="#Comentarios">Comentarios</a></li>
+                    <li><a href="#Contactos">Contactos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contactos</h4>
+                <p><i class="bi bi-geo-alt"></i> Santo Domingo</p>
+                <p><i class="bi bi-telephone"></i> 829-864-9779</p>
+                <p><i class="bi bi-envelope"></i> segurapolancohector@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Siguenos</h4>
+                <div class="footer-social">
+                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copy">
+            <p><i class="bi bi-c-circle"></i> 2026 VEGOOD. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-    <div class="footer-copy">
-        <p><i class="bi bi-c-circle">2026 VEGOOD. Todos los derechos reservados.</i></p>
-    </div>
-   </footer>
-    
+    <script>
+        // ===== JAVASCRIPT PARA MEJORAR LA INTERACTIVIDAD =====
+
+        // 1. MENÚ HAMBURGUESA
+        const menuToggle = document.getElementById('menuToggle');
+        const menuLinks = document.getElementById('menuLinks');
+
+        menuToggle.addEventListener('click', function() {
+            menuLinks.classList.toggle('active');
+            // Cambiar ícono
+            if (menuLinks.classList.contains('active')) {
+                menuToggle.innerHTML = '<i class="bi bi-x-lg"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.menu-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+            });
+        });
+
+        // 2. SCROLL TO TOP
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 3. HEADER AL HACER SCROLL
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(58, 90, 64, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.backgroundColor = '#3a5a40';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.8)';
+            }
+        });
+
+        // 4. BOTONES DEL HERO
+        document.getElementById('verMenuBtn').addEventListener('click', function() {
+            document.querySelector('#Menu').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        document.getElementById('reservarBtn').addEventListener('click', function() {
+            document.querySelector('#Contactos').scrollIntoView({
+                behavior: 'smooth'
+            });
+            showNotification('Completa el formulario para reservar tu mesa', 'success');
+        });
+
+        // 5. BOTONES DE PEDIR EN EL MENÚ
+        document.querySelectorAll('.pedir-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.card');
+                const itemName = card.querySelector('h3').textContent;
+                const price = card.querySelector('.precio').textContent;
+                
+                // Animación del botón
+                this.textContent = '¡Agregado!';
+                this.style.backgroundColor = '#2ecc71';
+                this.disabled = true;
+                
+                // Mostrar notificación
+                showNotification(Agregaste ${itemName} ${price} al carrito, 'success');
+                
+                // Restaurar botón después de 2 segundos
+                setTimeout(() => {
+                    this.textContent = 'Pedir';
+                    this.style.backgroundColor = '#3a5a40';
+                    this.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // 6. VALIDACIÓN DEL FORMULARIO
+        const reservaForm = document.getElementById('reservaForm');
+        if (reservaForm) {
+            reservaForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar campos
+                const nombre = this.querySelector('input[type="text"]').value;
+                const email = this.querySelector('input[type="email"]').value;
+                const personas = this.querySelector('select').value;
+                const fecha = this.querySelector('input[type="date"]').value;
+                const hora = this.querySelector('input[type="time"]').value;
+                
+                if (!nombre || !email || !personas || !fecha || !hora) {
+                    showNotification('Por favor, completa todos los campos obligatorios', 'error');
+                    return;
+                }
+                
+                // Validar email
+                if (!isValidEmail(email)) {
+                    showNotification('Por favor, ingresa un email válido', 'error');
+                    return;
+                }
+                
+                // Cambiar texto del botón
+                const submitBtn = this.querySelector('.btn-reservar');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+                
+                // Simular envío
+                setTimeout(() => {
+                    showNotification('¡Reserva enviada con éxito! Te contactaremos pronto.', 'success');
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            });
+        }
+
+        // 7. FUNCIÓN PARA MOSTRAR NOTIFICACIONES
+        function showNotification(message, type = 'success') {
+            // Eliminar notificación existente
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => existingNotification.remove(), 300);
+            }
+            
+            // Crear nueva notificación
+            const notification = document.createElement('div');
+            notification.className = notification ${type};
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="close-notification"><i class="bi bi-x"></i></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Botón para cerrar
+            notification.querySelector('.close-notification').addEventListener('click', function() {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            });
+            
+            // Auto-eliminar después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+        }
+
+        // 8. VALIDAR EMAIL
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // 9. ANIMACIÓN DE TARJETAS AL SCROLL
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar a tarjetas
+        document.querySelectorAll('.card, .card-chef, .card-y').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(element);
+        });
+
+        // 10. EFECTO EN LAS ESTRELLAS
+        document.querySelectorAll('.card-y span').forEach(stars => {
+            stars.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            stars.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // 11. BOTONES "LEER MÁS"
+        document.querySelectorAll('.btn-m button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.card-y');
+                const cliente = card.querySelector('h4').textContent;
+                showNotification(Más información sobre ${cliente}, 'success');
+            });
+        });
+
+        // 12. CONTADOR DE VISITAS SIMPLE
+        let visitCount = localStorage.getItem('vegoodVisitCount') || 0;
+        visitCount = parseInt(visitCount) + 1;
+        localStorage.setItem('vegoodVisitCount', visitCount);
+        
+        console.log(¡Bienvenido a VEGOOD! Esta es tu visita número ${visitCount});
+
+        // 13. FECHA MÍNIMA EN EL FORMULARIO (hoy)
+        const fechaInput = document.querySelector('input[type="date"]');
+        if (fechaInput) {
+            const today = new Date().toISOString().split('T')[0];
+            fechaInput.min = today;
+        }
+
+        // 14. EFECTO HOVER EN ÍCONOS SOCIALES
+        document.querySelectorAll('.socia-cons i, .footer-social a').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // 15. CERRAR MENÚ AL HACER CLIC FUERA
+        document.addEventListener('click', function(event) {
+            if (!menuToggle.contains(event.target) && !menuLinks.contains(event.target)) {
+                menuLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+            }
+        });
+
+        // 16. INICIALIZACIÓN
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('VEGOOD - Página completamente cargada y funcional');
+            
+            // Asegurar que el header tenga el color correcto al cargar
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(58, 90, 64, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
